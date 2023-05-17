@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\ASP.NET Core Web Demo.props" />
+</Project>
