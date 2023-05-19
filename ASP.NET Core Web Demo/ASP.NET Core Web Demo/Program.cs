@@ -1,13 +1,18 @@
+ï»¿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using ASP.NET_Core_Web_Demo.Data;
 namespace ASP.NET_Core_Web_Demo
 {
     /// <summary>
-    /// Â·ÓÉ¸ñÊ½:ÓÃÀ´È·¶¨Ê¹ÓÃÊ²Ã´¸ñÊ½µ÷ÓÃ´úÂë
+    /// Â·ï¿½É¸ï¿½Ê½:ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½Ê¹ï¿½ï¿½Ê²Ã´ï¿½ï¿½Ê½ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½
     /// </summary>
     public class Program
     {
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddDbContext<ASPNET_Core_Web_DemoContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("ASPNET_Core_Web_DemoContext") ?? throw new InvalidOperationException("Connection string 'ASPNET_Core_Web_DemoContext' not found.")));
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
@@ -28,10 +33,10 @@ namespace ASP.NET_Core_Web_Demo
             app.UseRouting();
 
             app.UseAuthorization();
-            //Â·ÓÉÂß¼­,Èç¹ûÃ»ÓÐÌá¹©ÈÎºÎURL¶Î,Ëû½«Ä¬ÈÏÎªÒ»ÏÂÄ£°åÖÐÖ¸¶¨µÄ"Home"¿ØÖÆÆ÷ºÍ"Index"·½·¨
-            //controller:´ËURLÖ¸¶¨ÒªÔËÐÐµÄ¿ØÖÆÀà
-            //action:Ö¸¶¨¿ØÖÆÆ÷ÀàÉÏÒªÔËÐÐµÄ²Ù×÷·½·¨
-            //id?:Õë¶ÔµÄÊÇÂ·ÓÉÊý¾Ý
+            //Â·ï¿½ï¿½ï¿½ß¼ï¿½,ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½á¹©ï¿½Îºï¿½URLï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½ÎªÒ»ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½"Home"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"Index"ï¿½ï¿½ï¿½ï¿½
+            //controller:ï¿½ï¿½URLÖ¸ï¿½ï¿½Òªï¿½ï¿½ï¿½ÐµÄ¿ï¿½ï¿½ï¿½ï¿½ï¿½
+            //action:Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ÐµÄ²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            //id?:ï¿½ï¿½Ôµï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
