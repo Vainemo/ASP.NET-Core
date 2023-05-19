@@ -10,10 +10,13 @@ using ASP.NET_Core_Web_Demo.Models;
 
 namespace ASP.NET_Core_Web_Demo.Controllers
 {
+    /// <summary>
+    /// 构造函数使用依赖关系注入将 MvcMovieContext 数据库上下文注入到控制器中。 数据库上下文将在控制器中的每个 CRUD 方法中使用。
+    /// </summary>
     public class MoviesController : Controller
     {
         private readonly ASPNET_Core_Web_DemoContext _context;
-
+        //依赖注入，将数据库上下文 (MvcMovieContext) 注入到控制器中。 数据库上下文将在控制器中的每个 CRUD 方法中使用。
         public MoviesController(ASPNET_Core_Web_DemoContext context)
         {
             _context = context;
