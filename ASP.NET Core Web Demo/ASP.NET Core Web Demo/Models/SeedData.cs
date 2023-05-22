@@ -2,7 +2,6 @@
 using ASP.NET_Core_Web_Demo.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using MvcMovie.Data;
 using System;
 using System.Linq;
 
