@@ -5,10 +5,7 @@ using ASP.NET_Core_Web_Demo.Models;
 using MvcMovie.Models;
 
 namespace ASP.NET_Core_Web_Demo
-{
-    /// <summary>
-    /// ·�ɸ�ʽ:����ȷ��ʹ��ʲô��ʽ���ô���
-    /// </summary>
+{ 
     public class Program
     {
         public static void Main(string[] args)
@@ -41,10 +38,6 @@ namespace ASP.NET_Core_Web_Demo
             app.UseRouting();
 
             app.UseAuthorization();
-            //·���߼�,���û���ṩ�κ�URL��,����Ĭ��Ϊһ��ģ����ָ����"Home"��������"Index"����
-            //controller:��URLָ��Ҫ���еĿ�����
-            //action:ָ������������Ҫ���еĲ�������
-            //id?:��Ե���·������
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");

@@ -21,13 +21,36 @@ namespace ASP.NET_Core_Web_Demo.Controllers
         {
             _context = context;
         }
-
-        // GET: Movies
-        public async Task<IActionResult> Index()
+        [HttpPost]
+        public string Index(string searchString, bool notUsed)
         {
-              return _context.Movie != null ? 
-                          View(await _context.Movie.ToListAsync()) :
-                          Problem("Entity set 'ASPNET_Core_Web_DemoContext.Movie'  is null.");
+            return "From [HttpPost]Index:Filter on" + searchString;
+        }
+        // GET: Movies
+        public async Task<IActionResult> Index(string searchString)
+        {
+            if (_context.Movie==null)
+            {
+                return Problem("Entity set 'MvcMovieContext.Movie'  is null.");
+            }
+            //Linq语句,查询选择的电影
+
+            //查询执行:执行查询表达式的时间点可能会有所不同。
+            //         1.LINQ 查询始终在循环访问查询变量时执行，而不是在创建查询变量时执行。 这称为“延迟执行”。
+            //         2.在返回一系列值的查询中，查询变量本身从不保存查询结果，它只存储查询命令.
+            //         3.在执行查询后，所有后续查询都将使用内存中的 LINQ 运算符。 通过使用 foreach 或 For Each 语句或者调用某个 LINQ 转换运算符来循环访问查询变量会使查询立即执行。
+            //         这些转换运算符包括：ToList、ToArray、ToLookup 和 ToDictionary。
+            //立即执行查询:与返回一系列值的延迟执行查询相反，返回单一实例值的查询将立即执行
+            //          1.Average、Count、First 和 Max 是单一实例查询的一些示例。 这些查询立即执行，因为查询必须生成序列才能计算单一实例结果。
+            //          2.若要强制立即执行不生成单一实例值的查询，可以对查询或查询变量调用 ToList、ToDictionary 或 ToArray 方法。
+            //          3.通过在查询表达式之后紧随 foreach 或 For Each 循环，也可以强制执行，而通过调用 ToList 或 ToArray，可以缓存单个集合对象中的所有数据。
+            var movies = from m in _context.Movie select m;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                //Contains 方法在数据库上运行，而不是在上面显示的 C# 代码中运行
+                movies = movies.Where(s => s.Title!.Contains(searchString));
+            }
+            return View(await movies.ToArrayAsync());
         }
 
         // GET: Movies/Details/5
