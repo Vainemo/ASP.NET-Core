@@ -22,9 +22,9 @@ namespace ASP.NET_Core_Web_Demo.Controllers
             _context = context;
         }
         [HttpPost]
-        public string Index(string searchString, bool notUsed)
+        public string Index(string scearchString, bool notUsed)
         {
-            return "From [HttpPost]Index:Filter on" + searchString;
+            return "From [HttpPost]Index:Filter on" + scearchString;
         }
         // GET: Movies
         public async Task<IActionResult> Index(string searchString)
