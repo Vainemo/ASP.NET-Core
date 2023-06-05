@@ -22,7 +22,8 @@ namespace ASP.NET_Core_Web_Demo.Migrations
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ReleaseDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Genre = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: true)
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    Rating=table.Column<decimal>(type: "nvarchar(max)", nullable: true),
                 },
                 constraints: table =>
                 {

@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<ASP.NET_Core_Web_Demo.Models.Movie>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "电影库";
 }
 
-<h1>Index</h1>
+<h1>电影库</h1>
 
 <p>
     <a asp-action="Create">加入新电影</a>
@@ -30,6 +30,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rating)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -48,6 +51,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rating)
+                </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">编辑</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">详情</a> |

@@ -4,6 +4,7 @@ using ASP.NET_Core_Web_Demo.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ASP.NET_Core_Web_Demo.Migrations
 {
     [DbContext(typeof(ASPNET_Core_Web_DemoContext))]
-    partial class ASPNET_Core_Web_DemoContextModelSnapshot : ModelSnapshot
+    [Migration("20230605103927_Rating")]
+    partial class Rating
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,9 +47,6 @@ namespace ASP.NET_Core_Web_Demo.Migrations
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Rating")
-                       .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
