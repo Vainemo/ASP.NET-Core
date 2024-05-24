@@ -13,6 +13,9 @@ public static class SeedData
     {
         using (var context = new ASPNET_Core_Web_DemoContext(serviceProvider.GetRequiredService<DbContextOptions<ASPNET_Core_Web_DemoContext>>())) 
         {
+           
+                return;
+            
             //如果有值,则返回True
             if(context.Movie.Any())
             {

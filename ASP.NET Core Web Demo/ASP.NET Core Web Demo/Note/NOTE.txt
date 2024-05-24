@@ -1,0 +1,41 @@
+﻿2024/5/24
+ 1.Blazor是什么？
+
+    Blazor是一个使用.NET框架和C#编程语言Razor语法构建Web应用程序的UI框架
+
+    它可以用于构建单页应用（SPA）和 Web服务，它使用编译的C#来操纵HTML DOM来替代JavaScript。
+
+ 2.Blazor的优势和特点
+   1.简化开发流程：在Blazor中，前端和后端都可以使用C#进行编程。
+
+   2.高效的性能：Blazor应用程序可以直接在浏览器中运行，也可以在服务端运行，并通过SignalR实时通信，
+   从而可以减少网络延迟和带宽消耗，提高应用程序的性能。
+
+   3.安全性强：Blazor 应用程序不需要在客户端上运行任何JavaScript代码，相对于传统的Web应用程序，
+   可以大幅度降低应用程序受到跨站点脚本攻击（XSS）的风险。
+
+   4.易于测试和调试：由于Blazor应用程序的代码都是使用C#编写的，因此可以使用Visual Studio和其他C#开
+   发工具对其进行测试和调试
+
+   5.可以重用现有代码：由于Blazor使用.NET框架和C#编程语言，因此可以重用现有的.NET库和组件，简化了开
+   发过程并提高了代码的复用性。
+
+   6.单语言全栈开发：在 Blazor 中，开发人员可以使用同一种编程语言（C#）来构建 Web 应用程序的服务器端
+   和客户端代码，从而实现一种全栈开发的方式
+
+ 3.Blazor的劣势
+    框架生态相对较弱：相比于Vue、React、Angular等前端框架，Blazor的生态尚不完全，社区资源和开源项目相
+    对较少，这可能会增加开发人员的学习和解决问题的难度
+
+ 4.Blazor三种托管模型
+   1.Blazor Server
+     应用程序在服务器上运行，可享受完整的 .NET Core 运行时支持。所有处理都在服务器上完成，UI/DOM 更改通过 SignalR 连接回传给客户端。
+
+   2.Blazor WebAssembly
+     应用程序在浏览器中基于WebAssembly的.NET运行时运行客户端。Blazor应用程序及其依赖项和.NET运行时被下载到浏览器中。该应用程序直接在
+     浏览器的UI线程上执行。UI更新和事件处理在同一进程中进行。应用程序的资产被作为静态文件部署到能够为客户提供静态内容的网络服务器或服务上。
+
+   3.Blazor Hybrids
+     可以使用不同的 .NET 本机应用框架（包括 .NET MAUI、WPF 和 Windows 窗体）生成 Blazor Hybrid 应用
+      在 Blazor Hybrid 应用中，Razor 组件与任何其他 .NET 代码一起直接在本机应用中（而不在 WebAssembly 上）运行，并通过本地互操作通道基于 
+      HTML 和 CSS 将 Web UI 呈现到嵌入式 Web View 控件。
